@@ -9,10 +9,13 @@ class SplashPage extends StatefulWidget {
   _SplashPageState createState() => _SplashPageState();
 }
 
-class _SplashPageState extends State<SplashPage> with AfterLayoutMixin {
+class _SplashPageState extends State<SplashPage> {
   @override
-  void afterFirstLayout(BuildContext context) {
-    this._check();
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _check();
+    });
   }
 
   _check() async {

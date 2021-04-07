@@ -5,8 +5,6 @@ import 'package:meta/meta.dart' show required;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:sgaapp/src/Models/infoLoginModel.dart';
 
-
-
 class Auth {
   Auth.internal();
   static Auth _instance = Auth.internal();
@@ -20,16 +18,17 @@ class Auth {
 
   Future<void> setSession(ModelLogin data) async {
     final Session session = Session(
-        token: data.token,
-        auth: data.auth,
-        info: Info(
-          idUser: data.info.idUser,
-          nombre: data.info.nombre,
-          usuario: data.info.usuario,
-          tipoUsuario: data.info.tipoUsuario,
-          estado: data.info.tipoUsuario,
-          permiso: data.info.estado,
-        ));
+      token: data.token,
+      auth: data.auth,
+      info: Info(
+        idUser: data.info.idUser,
+        nombre: data.info.nombre,
+        usuario: data.info.usuario,
+        tipoUsuario: data.info.tipoUsuario,
+        estado: data.info.tipoUsuario,
+        permiso: data.info.estado,
+      ),
+    );
     final String value = jsonEncode(session.toJson());
     await this._storage.write(key: key, value: value);
     print('Session saved');
@@ -38,10 +37,10 @@ class Auth {
     // getSession();
   }
 
-
 // OBTEMENOS LA INFORMACION DEL DISPOSITIVO
-Future<Session> getSession() async {
+  Future<Session> getSession() async {
     final String value = await this._storage.read(key: key);
+
     if (value != null) {
       final Map<String, dynamic> json = jsonDecode(value);
       final session = Session.fromJson(json);
@@ -50,7 +49,6 @@ Future<Session> getSession() async {
     }
     return null;
   }
-
 
   // CIERRO SESSION
   Future<void> logOut(BuildContext context) async {

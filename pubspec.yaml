@@ -41,6 +41,8 @@ dependencies:
   flutter_share: ^1.0.3
   logger: ^0.9.4
   get_it: ^5.0.1
+  auto_size_text: ^2.1.0
+  equatable: ^2.0.0
 
 dev_dependencies:
   flutter_test:

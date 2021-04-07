@@ -42,13 +42,12 @@ class Api {
 
       // Auth.instance.setSession(response.data);
       final infoData = ModelLogin.fromJson(response.data);
-      Auth.instance.setSession(infoData);
+      await Auth.instance.setSession(infoData);
       progresDIalog.dismisDialog();
       if (response.statusCode == 200) {
         // print(response.data);
         // Navigator.pushNamedAndRemoveUntil(context, 'home', (_) => false,
-        Navigator.pushNamedAndRemoveUntil(context, 'prueba', (_) => false,
-            arguments: infoData);
+        Navigator.pushNamedAndRemoveUntil(context, 'home', (_) => false, arguments: infoData);
         return Session.fromJson(response.data);
       }
     } catch (e) {
@@ -112,10 +111,8 @@ class Api {
         },
       );
 
-      if (response.statusCode == 200) {
-        final infoMaterias = MateriasModel.fromJson(response.data);
-        return infoMaterias;
-      }
+      final infoMaterias = MateriasModel.fromJson(response.data);
+      return infoMaterias;
     } catch (e) {
       progresDIalog.dismisDialog();
       if (e is DioError) {
@@ -178,13 +175,12 @@ class Api {
 
       if (response.statusCode == 200) {
         final infoData = new Especialidades.fromJsonList(response.data);
-  //  print(infoData.items[0].notEspecialidad);
-  //  print(infoData.items[1].notEspecialidad);
+        //  print(infoData.items[0].notEspecialidad);
+        //  print(infoData.items[1].notEspecialidad);
         return infoData.items;
       }
     } catch (e) {
       if (e is DioError) {
-        // print(e.response.statusCode);
         // print(e.response.data);
         // String message = e.message;
         // if (e.response.statusCode == 404) {
@@ -282,7 +278,7 @@ class Api {
       if (response.statusCode == 200) {
         final dato = CursosList.fromJson(response.data);
 // print(dato.cursos[0].notCurso);
-   
+
         return dato.cursos;
       }
     } catch (e) {
@@ -310,8 +306,7 @@ class Api {
   }
 
 // OBTENGO LAS MATERIAS MEDIANTE COMBO
-  Future<List<MateriasSelect>> getMateriasSelect(
-      String especialidad, String periodo, String curso) async {
+  Future<List<MateriasSelect>> getMateriasSelect(String especialidad, String periodo, String curso) async {
     // Future<MateriasDetalle> getMateriaDetalle() async {
     // final ProgressDialog progresDIalog = ProgressDialog(context);
     try {
@@ -348,8 +343,7 @@ class Api {
 
   // OBTENGO DETLLE DE LAS MATERIAS
 
-  Future<DetalleDeMateria> getMateriasDetalle(
-      String especialidad, String periodo, String curso, String materia) async {
+  Future<DetalleDeMateria> getMateriasDetalle(String especialidad, String periodo, String curso, String materia) async {
     // Future<MateriasDetalle> getMateriaDetalle() async {
     // final ProgressDialog progresDIalog = ProgressDialog(context);
     try {
@@ -418,8 +412,7 @@ class Api {
 //=========================================
 
   // ENVIO CORREO DEL USUARIO PARA RECUPERAR CONTRASEÑA
-  Future<void> sendCorreo(BuildContext context,
-      {@required String correo}) async {
+  Future<void> sendCorreo(BuildContext context, {@required String correo}) async {
     final ProgressDialog progresDIalog = ProgressDialog(context);
     try {
       progresDIalog.show();

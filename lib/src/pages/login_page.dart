@@ -1,7 +1,6 @@
-
-
 // import 'package:sgaNeitor/src/urls/urls.dart' as urls;
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -117,12 +116,14 @@ class _InfoLogo extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Text('Contáctanos',
-                        style: GoogleFonts.roboto(
-                          fontSize: size.iScreen(1.8),
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                        )),
+                    Text(
+                      'Contáctanos',
+                      style: GoogleFonts.roboto(
+                        fontSize: size.iScreen(1.8),
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                      ),
+                    ),
                     Icon(
                       Icons.arrow_right,
                       color: Colors.white,
@@ -134,23 +135,30 @@ class _InfoLogo extends StatelessWidget {
                   onTap: () {
                     urls.abrirPagina2Jl();
                   },
-                  child: Text('https://2jl.ec',
-                      style: GoogleFonts.roboto(
-                        fontSize: size.iScreen(1.8),
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white,
-                      )),
+                  child: Text(
+                    'https://2jl.ec',
+                    style: GoogleFonts.roboto(
+                      fontSize: size.iScreen(1.8),
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    urls.abrirPaginaNeitor();
-                  },
-                  child: Text('https://neitor.com',
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      urls.abrirPaginaNeitor();
+                    },
+                    child: AutoSizeText(
+                      'https://neitor.com',
+                      textAlign: TextAlign.right,
                       style: GoogleFonts.roboto(
                         fontSize: size.iScreen(1.8),
                         fontWeight: FontWeight.w500,
                         color: Colors.white,
-                      )),
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -190,9 +198,7 @@ class __FormState extends State<_Form> {
   Widget build(BuildContext context) {
     return Container(
       width: widget.size.wScreen(100),
-      padding: EdgeInsets.symmetric(
-          horizontal: widget.size.iScreen(5.0),
-          vertical: widget.size.iScreen(5.0)),
+      padding: EdgeInsets.symmetric(horizontal: widget.size.iScreen(5.0), vertical: widget.size.iScreen(5.0)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -256,11 +262,10 @@ class __FormState extends State<_Form> {
                 ),
                 child: FlatButton(
                   color: Color(0xFFFF0000),
-                    child: Text('Ingresar',
-                        style: GoogleFonts.roboto(
-                            fontSize: widget.size.iScreen(2.5),
-                            color: Colors.white)),
-                    onPressed: _submit),
+                  child: Text('Ingresar',
+                      style: GoogleFonts.roboto(fontSize: widget.size.iScreen(2.5), color: Colors.white)),
+                  onPressed: _submit,
+                ),
               ),
               Container(
                 alignment: Alignment.centerRight,
@@ -273,9 +278,7 @@ class __FormState extends State<_Form> {
                   child: Text(
                     'Olvidé mi contraseña',
                     style: GoogleFonts.roboto(
-                        fontSize: widget.size.iScreen(1.8),
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black87),
+                        fontSize: widget.size.iScreen(1.8), fontWeight: FontWeight.bold, color: Colors.black87),
                   ),
                 ),
               ),
@@ -307,6 +310,3 @@ class _Logo extends StatelessWidget {
     );
   }
 }
-
-
-
